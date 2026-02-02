@@ -346,7 +346,6 @@ class ToolExecutor:
                 tool="customer_support_system",
                 ok=True,
                 data={
-                    "ticket_id": "CS-" + str(hash(message))[:6],
                     "status": "open",
                     "priority": tool_call.args.get("priority", "medium"),
                     "assigned_to": "Support Agent",
@@ -358,7 +357,6 @@ class ToolExecutor:
                 tool="customer_support_system",
                 ok=True,
                 data={
-                    "followup_id": "FU-" + str(hash(message))[:6],
                     "scheduled_time": "Tomorrow 10:00 AM",
                     "channel": tool_call.args.get("channel", "email"),
                     "recipient": "Customer",
@@ -370,7 +368,6 @@ class ToolExecutor:
                 tool="customer_support_system",
                 ok=True,
                 data={
-                    "refund_id": "RF-" + str(hash(message))[:6],
                     "status": "pending_approval",
                     "amount": "To be determined",
                     "reason": tool_call.args.get("description", "Customer request"),
@@ -382,7 +379,6 @@ class ToolExecutor:
                 tool="customer_support_system",
                 ok=True,
                 data={
-                    "support_case_id": "SC-" + str(hash(message))[:8],
                     "status": "in_progress",
                     "action_taken": "Request logged in support system",
                     "next_steps": "Customer will be contacted within 24 hours"
