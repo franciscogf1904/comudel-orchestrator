@@ -50,6 +50,8 @@ While using a combination of a classifier with examples and a pattern checker ca
 
 Adding the word count bias helps with smaller messages that dont have a lot of information, but is not helpful with requests that pass the five word threshold but still do not contain all the relevant information
 
+Mixed intent requests are classified with only one intent meaning the clientºs request is not completely fulfilled.
+
 # Limitations
 
 The lack of examples from clients results in less than ideal training. However, since our approach is easily scalable and can even be changed to receive csv or txt files as inputs with human-classified requests for training, this would not be a problem on a larger scale project.
