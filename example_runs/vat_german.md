@@ -7,7 +7,7 @@
 ```
 {
   "intent": "knowledge_base",
-  "confidence": 0.88,
+  "confidence": 0.35804059867074167,
   "needs_clarification": false,
   "safety": {
     "status": "allowed",
