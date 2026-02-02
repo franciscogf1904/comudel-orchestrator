@@ -6,7 +6,7 @@
 ```
 {
   "intent": "unsafe",
-  "confidence": 0.82,
+  "confidence": 0.4700122154865136,
   "needs_clarification": false,
   "safety": {
     "status": "blocked",
