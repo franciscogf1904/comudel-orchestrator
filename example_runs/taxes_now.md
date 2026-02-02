@@ -7,7 +7,7 @@
 ```
 {
   "intent": "ambiguous",
-  "confidence": 0.75,
+  "confidence": 0.48282813137664327,
   "needs_clarification": true,
   "safety": {
     "status": "flagged",
