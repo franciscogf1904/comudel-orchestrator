@@ -6,7 +6,7 @@
 ```
 {
   "intent": "company_analytics",
-  "confidence": 0.92,
+  "confidence": 0.5625184663245267,
   "needs_clarification": false,
   "safety": {
     "status": "allowed",
