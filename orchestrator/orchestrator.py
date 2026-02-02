@@ -1,5 +1,4 @@
 # orchestrator.py
-import json
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, asdict
 import numpy as np
@@ -10,7 +9,6 @@ from sklearn.preprocessing import LabelEncoder
 import re
 from nltk.stem import PorterStemmer
 
-# Define the intents
 INTENTS = [
     "company_analytics",
     "knowledge_base", 
@@ -98,7 +96,6 @@ class IntentClassifier:
         self.ambiguity_boost = ambiguity_boost
         
     def preprocess_text(self, text):
-        """Preprocess text similar to hotel review classifier"""
         if not isinstance(text, str):
             text = str(text)
         
@@ -115,7 +112,6 @@ class IntentClassifier:
         return ' '.join(stemmed_words)
     
     def train(self, texts, labels):
-        """Train the classifier with example data"""
         # Preprocess all texts
         preprocessed_texts = [self.preprocess_text(text) for text in texts]
         
@@ -132,7 +128,6 @@ class IntentClassifier:
         return self
     
     def predict(self, text):
-        """Predict intent for a single text"""
         if not self._trained:
             raise ValueError("Classifier must be trained first")
         
@@ -208,7 +203,6 @@ class SafetyChecker:
         ]
         
     def assess(self, text, intent):
-        """Assess safety of the request"""
         text_lower = text.lower()
         
         # Check for unsafe tax evasion patterns
@@ -244,7 +238,6 @@ class SafetyChecker:
         )
 
 class ToolExecutor:
-    """Mock tool executor for demonstration"""
     
     def execute(self, tool_call):
         if tool_call.tool == "company_data":
@@ -262,7 +255,6 @@ class ToolExecutor:
             )
     
     def _execute_company_data(self, tool_call):
-        """Mock company data queries"""
         action = tool_call.action
         
         if action == "query_vat":
@@ -307,7 +299,6 @@ class ToolExecutor:
             )
     
     def _execute_knowledge_base(self, tool_call):
-        """Mock knowledge base queries"""
         action = tool_call.action
         
         if action == "query_vat_rules":
@@ -348,7 +339,6 @@ class ToolExecutor:
                 }
             )
     def _execute_customer_support(self, tool_call):
-        """Mock customer support system queries"""
         action = tool_call.action
         
         if action == "create_ticket":
@@ -399,9 +389,7 @@ class ToolExecutor:
                 }
             )
 
-class ResponseComposer:
-    """Composes user-facing responses based on intent and results"""
-    
+class ResponseComposer:    
     def compose(self, intent, tool_results, needs_clarification, safety):
         if safety.status == "blocked":
             return self._compose_blocked_response(safety)
@@ -425,7 +413,7 @@ class ResponseComposer:
     
     def _compose_clarification_response(self, intent):
         if intent == "ambiguous":
-            return "I need more information to help you. Please specify: Which taxes are you referring to? What jurisdiction? What amount needs to be paid?"
+            return "I need more information to help you. Please specify"
         return "I need some clarification to proceed with your request. Could you provide more details?"
     
     def _compose_company_response(self, tool_results):
@@ -471,7 +459,6 @@ class ResponseComposer:
         return "I've processed your request. Here are the results."
 
 class Orchestrator:
-    """Main orchestrator that ties everything together"""
     
     def __init__(self):
         self.classifier = IntentClassifier()
@@ -483,7 +470,6 @@ class Orchestrator:
         self._train_classifier()
     
     def _train_classifier(self):
-        """Train classifier using data from train.py"""
         from train import create_training_data
         
         data = create_training_data()
@@ -523,7 +509,6 @@ class Orchestrator:
         return decision
     
     def _create_plan(self, intent, message, safety):
-        """Create execution plan based on intent"""
         plan = []
         
         if safety.status == "blocked":
